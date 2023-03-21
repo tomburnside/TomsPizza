@@ -19,8 +19,13 @@ app.use("/api/pizzas", pizzasRoute);
 app.use('/api/users/', userRoute);
 app.use('/api/orders/', ordersRoute);
 
-app.get("/", (req, res) => {
-  res.send("Server working " + port);
-});
+if(process.env.NODE_ENV ==='production')
+{
+    app.use('/' , express.static('client/build'))
 
-app.listen(port, () => console.log("Server running on port"));
+    app.get('*' , (req , res)=>{
+
+        res.sendFile(path.resolve(__dirname  , 'client/build/index.html'))
+
+    })
+}
