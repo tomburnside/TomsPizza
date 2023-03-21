@@ -19,7 +19,8 @@ export const placeOrderReducer =(state={} , action) =>{
 
 }
 
-export const getUserOrdersReducer=(state={orders : []} , action)=>{
+
+export const getUserOrdersReducer=(state={oredrs : []} , action)=>{
 
     switch(action.type)
     {
@@ -39,6 +40,7 @@ export const getUserOrdersReducer=(state={orders : []} , action)=>{
     }
 
 }
+
 
 export const getAllOrdersReducer=(state={oredrs : []} , action)=>{
 

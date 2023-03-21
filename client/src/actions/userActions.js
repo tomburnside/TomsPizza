@@ -20,8 +20,8 @@ export const loginUsers=(user)=>async dispatch=>{
     try {
         const response = await axios.post('/api/users/login' , user)
         console.log(response);
-        dispatch({type:'USER_LOGIN_SUCCESS'})
-        localStorage.setItem('currentUser', JSON.stringify(response.data))
+        dispatch({type:'USER_LOGIN_SUCCESS' , payload: response.data})
+        localStorage.setItem('currentUser' , JSON.stringify(response.data))
         window.location.href='/'
     } catch (error) {
         dispatch({type:'USER_LOGIN_FAILED' , payload: error})
@@ -32,8 +32,8 @@ export const loginUsers=(user)=>async dispatch=>{
 export const logoutUser=()=>dispatch=>{
 
 
-    localStorage.removeItem('currentUser')
-    window.location.href='/login'
+      localStorage.removeItem('currentUser')
+      window.location.href='/login'
 
 }
 
